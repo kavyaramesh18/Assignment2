@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t my-maven-app .'
+                bat 'docker build -t my-maven-app .'
             }
         }
         stage('Run Maven Build') {
             steps {
-                sh 'docker run --rm my-maven-app'
+                bat 'docker run --rm my-maven-app'
             }
         }
         stage('Archive Artifacts') {
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Execute Post-Build Script') {
             steps {
-                sh './post_build.sh'
+                bat 'bash post_build.sh'
             }
         }
     }
